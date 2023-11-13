@@ -167,8 +167,8 @@ public class Login extends javax.swing.JFrame {
          Usuario usuarioExiste = controller.loginSistema(usuario);
          
          if(usuarioExiste != null){
-             VentanaPrivada ventanaPrivada = new VentanaPrivada();
-            ventanaPrivada.setVisible(true);
+             MenuPrincipal menuPrincipal = new MenuPrincipal();
+            menuPrincipal.setVisible(true);
             this.dispose();
          }else{
              JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
