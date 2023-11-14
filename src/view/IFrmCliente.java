@@ -10,6 +10,7 @@ package view;
  */
 
 import controller.ClienteController;
+import javax.swing.JTable;
 import model.DAO.Base;
 
 public class IFrmCliente extends javax.swing.JInternalFrame {
@@ -23,12 +24,21 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
         initComponents();
         Base.inicia();
         controller = new ClienteController(this);
-        this.CargarFormulario();        
+        CargarFormulario();        
     }
     
-    private void CargarFormulario(){
-     jTable1.setModel(controller.cargarCliente());
+    private void CargarFormulario(){     
+     controller.cargarClientes();
     }
+
+    public JTable getTablaClientes() {
+        return tablaClientes;
+    }
+
+    public void setTablaClientes(JTable tablaClientes) {
+        this.tablaClientes = tablaClientes;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +68,7 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -117,7 +127,7 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
 
         jButton4.setText("Eliminar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -128,7 +138,7 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
                 "Nombre", "Sexo", "Fecha de Nacimiento", "Telefono", "Email", "DNI", "Direccion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,8 +216,7 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(69, 69, 69))
+                                .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(jButton2)
@@ -264,7 +273,6 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -279,6 +287,7 @@ public class IFrmCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 }
 

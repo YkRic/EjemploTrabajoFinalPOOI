@@ -22,24 +22,24 @@ public class ClienteController {
         this.formCliente = formCliente;
     }
     
-    public DefaultTableModel cargarCliente(){
+    public void cargarClientes(){
         clienteDao = new  ClienteDAO();
         ArrayList<Cliente> clientes = clienteDao.selectAll();
-        DefaultTableModel dfm = new DefaultTableModel();
-        for(int i = 0; i<clientes.size(); i++ ){
-            Object datos[] ={clientes.get(i).getId(),
-                            clientes.get(i).getNombre(),
-                            clientes.get(i).getSexo(),
-                            clientes.get(i).getFechaNacimiento(),
-                            clientes.get(i).getTelefono(),
-                            clientes.get(i).getEmail(),
-                            clientes.get(i).getDni(),
-                            clientes.get(i).getDireccion()};
-            
-            dfm.addRow(datos);
-            
-        }
-        return dfm;        
+        DefaultTableModel tableModel = (DefaultTableModel)formCliente.getTablaClientes().getModel();
+        tableModel.setRowCount(0);
+        for (Cliente cliente : clientes) {
+            tableModel.addRow(new Object[]{
+            cliente.getId(),
+            cliente.getNombre(),
+            cliente.getSexo(),
+            cliente.getFechaNacimiento(),
+            cliente.getTelefono(),
+            cliente.getEmail(),
+            cliente.getDni(),
+            cliente.getDireccion()
+            });
+        }        
+             
     }
     
     
